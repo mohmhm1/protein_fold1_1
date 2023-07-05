@@ -95,7 +95,7 @@ workflow COLABFOLD {
             )
             ch_versions = ch_versions.mix(MULTIFASTA_TO_CSV.out.versions)
             COLABFOLD_BATCH(
-                MULTIFASTA_TO_CSV.out.input_csv,
+                INPUT_CHECK.out.fastas,
                 params.colabfold_model_preset,
                 PREPARE_COLABFOLD_DBS.out.params,
                 [],
@@ -125,7 +125,7 @@ workflow COLABFOLD {
             )
             ch_versions = ch_versions.mix(MULTIFASTA_TO_CSV.out.versions)
             MMSEQS_COLABFOLDSEARCH (
-                MULTIFASTA_TO_CSV.out.input_csv,
+                INPUT_CHECK.out.fastas,
                 PREPARE_COLABFOLD_DBS.out.params,
                 PREPARE_COLABFOLD_DBS.out.colabfold_db,
                 PREPARE_COLABFOLD_DBS.out.uniref30,
