@@ -4,7 +4,7 @@ process COLABFOLD_BATCH {
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'docker://nfcore/proteinfold_colabfold:1.1.0' :
-        'nfcore/proteinfold_colabfold:1.0.0' }"
+        'nfcore/proteinfold_colabfold:1.1.0' }"
 
     input:
     tuple val(meta), path(fasta)
