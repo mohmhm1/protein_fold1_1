@@ -29,6 +29,7 @@ process MMSEQS_COLABFOLDSEARCH {
 
     /colabfold_batch/colabfold-conda/bin/colabfold_search \\
         $args \\
+        --db-load-mode 0 \\
         --threads $task.cpus ${fasta} \\
         ./db \\
         "result/"
