@@ -141,7 +141,7 @@ workflow COLABFOLD {
                 PREPARE_COLABFOLD_DBS.out.uniref30,
             )
             ch_versions = ch_versions.mix(MMSEQS_COLABFOLDSEARCH.out.versions)
-       // }
+       }
 
 
         //
