@@ -5,6 +5,7 @@ process MMSEQS_COLABFOLDSEARCH {
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'docker://nfcore/proteinfold_colabfold:1.0.0' :
         'nfcore/proteinfold_colabfold:1.0.0' }"
+/colabfold_batch/colabfold-conda/bin/colabfold_search
 */
  container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'docker://nfcore/proteinfold_colabfold:1.1.0' :
@@ -30,7 +31,7 @@ process MMSEQS_COLABFOLDSEARCH {
     ln -r -s $uniref30/uniref30_* ./db
     ln -r -s $colabfold_db/colabfold_envdb* ./db
 
-    /colabfold_batch/colabfold-conda/bin/colabfold_search \\
+    colabfold_search \\
         $args \\
         --db-load-mode 0 \\
         --threads $task.cpus ${fasta} \\
