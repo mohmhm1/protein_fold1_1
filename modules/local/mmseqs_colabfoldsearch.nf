@@ -1,11 +1,14 @@
 process MMSEQS_COLABFOLDSEARCH {
     tag "$meta.id"
     label 'process_high_memory_high_process'
-
+/*
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'docker://nfcore/proteinfold_colabfold:1.0.0' :
         'nfcore/proteinfold_colabfold:1.0.0' }"
-
+*/
+ container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'docker://nfcore/proteinfold_colabfold:1.1.0' :
+        'nfcore/proteinfold_colabfold:1.1.0' }"
     input:
     tuple val(meta), path(fasta)
     path ('db/params')
