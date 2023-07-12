@@ -90,7 +90,7 @@ workflow COLABFOLD {
         // MODULE: Run colabfold
         //
         if (params.colabfold_model_preset != 'AlphaFold2-ptm') {
-            MULTIFASTA_TO_CSV(
+         /*   MULTIFASTA_TO_CSV(
                 INPUT_CHECK.out.fastas
             )
             ch_versions = ch_versions.mix(MULTIFASTA_TO_CSV.out.versions)
@@ -104,6 +104,7 @@ workflow COLABFOLD {
             )
             ch_versions = ch_versions.mix(COLABFOLD_BATCH.out.versions)
         } else {
+*/
             COLABFOLD_BATCH(
                 INPUT_CHECK.out.fastas,
                 params.colabfold_model_preset,
@@ -113,14 +114,14 @@ workflow COLABFOLD {
                 params.num_recycle
             )
             ch_versions = ch_versions.mix(COLABFOLD_BATCH.out.versions)
-        }
+        //}
 
     } else if (params.colabfold_server == 'local') {
         //
 	    // MODULE: Run mmseqs
         //
         if (params.colabfold_model_preset != 'AlphaFold2-ptm') {
-            MULTIFASTA_TO_CSV(
+     /*       MULTIFASTA_TO_CSV(
                 INPUT_CHECK.out.fastas
             )
             ch_versions = ch_versions.mix(MULTIFASTA_TO_CSV.out.versions)
@@ -132,6 +133,7 @@ workflow COLABFOLD {
             )
             ch_versions = ch_versions.mix(MMSEQS_COLABFOLDSEARCH.out.versions)
         } else {
+*/
             MMSEQS_COLABFOLDSEARCH (
                 INPUT_CHECK.out.fastas,
                 PREPARE_COLABFOLD_DBS.out.params,
@@ -139,7 +141,7 @@ workflow COLABFOLD {
                 PREPARE_COLABFOLD_DBS.out.uniref30,
             )
             ch_versions = ch_versions.mix(MMSEQS_COLABFOLDSEARCH.out.versions)
-        }
+       // }
 
 
         //
