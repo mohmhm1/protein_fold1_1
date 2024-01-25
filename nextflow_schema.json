@@ -115,7 +115,7 @@
                     "type": "string",
                     "default": "AlphaFold2-ptm",
                     "description": "Model preset for 'colabfold' mode",
-                    "enum": ["alphafold2_ptm", "alphafold2_multimer_v1", "alphafold2_multimer_v2"],
+                    "enum": ["AlphaFold2-ptm", "AlphaFold2-multimer-v1", "AlphaFold2-multimer-v2"],
                     "fa_icon": "fas fa-stream"
                 },
                 "num_recycle": {
